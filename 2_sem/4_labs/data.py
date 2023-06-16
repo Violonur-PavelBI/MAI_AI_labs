@@ -8,7 +8,7 @@ class Point_Generator():
         self.num_points = num_points
         self.percent_outliers = percent_outliers
         self.inliers_num = int(np.floor(self.num_points * (1 - self.percent_outliers)))
-        self.outliers_num = num_points - self.inliers_num
+        self.outliers_num = int(np.floor(self.num_points * self.percent_outliers))
     
     def generate_case(self, k: float = 1., b: float = 0., eps: float = 0.1) -> np.ndarray:
         """Генерация точек выборки вместе с шумовыми для прямой y = kx + b + eps,

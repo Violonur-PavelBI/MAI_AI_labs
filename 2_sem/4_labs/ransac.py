@@ -35,7 +35,8 @@ class RANSAC:
         pass
 
     def fit(self):
-        pass
-
+        for i in range(self.iter_num):
+            pass
+        
     def draw(self):
         pass
