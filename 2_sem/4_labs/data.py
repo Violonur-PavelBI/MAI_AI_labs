@@ -38,5 +38,4 @@ class Point_Generator():
         data = np.concatenate((inliers, outliers))
         np.random.shuffle(data)
 
-        return data.T[0], data.T[1]
-         
+        return data
