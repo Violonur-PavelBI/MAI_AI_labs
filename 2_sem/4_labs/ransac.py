@@ -3,6 +3,7 @@ RANSAC for 2d lines
 Algorythm:
 
 I Hypotesys generation Stage
+
 1. Sample 2d points (1. 2 ponts; 2. 5 points)
 2. Model estimation (1. analytics; 2. MSE estimation)
 
@@ -26,13 +27,26 @@ class RANSAC:
         self.inlinears: list = []
         self.outliers: list = []
         self.score: int = 0
-        self.points: np.ndarray = None;
+        self.points: np.ndarray = None
 
     def set_case(self, case_params) -> None:
-        pass
+        
+    
+        if 'iter_num' in case_params.keys():
+            self.iter_num = case_params['iter_num']
+        if 'n_pointsy' in case_params.keys():
+            self.n_pointsy = case_params['n_pointsy']
+        if 'inlin_thrsh' in case_params.keys():
+            self.inlin_thrsh = case_params['inlin_thrsh']
+        if 'epsilon' in case_params.keys():
+            self.epsilon = case_params['epsilon']
+        if not ('x' in case_params.keys() and 'y' in case_params.keys()):
+            raise ValueError(f"case_params обязан включать в себя ключи 'x' и 'y'")
+        self.x = case_params['x']
+        self.y = case_params['y']
 
     def clear_case(self) -> None:
-        pass
+        self.__init__()
 
     def fit(self):
         for i in range(self.iter_num):
